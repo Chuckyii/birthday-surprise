@@ -149,7 +149,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 25px;
         }
 
         .glowing-wishes h1 {
@@ -157,7 +157,8 @@
             color: #ffffff;
             letter-spacing: 4px;
             text-shadow: 0 0 10px #ff477e, 0 0 20px #a371f7, 0 0 40px #58a6ff;
-            line-height: 1.6;
+            line-height: 1.5;
+            margin-bottom: 10px;
         }
 
         .rocky-trigger-container {
@@ -166,7 +167,7 @@
             align-items: center;
             cursor: pointer;
             z-index: 20;
-            margin-top: 10px;
+            margin-top: 15px;
             background: none;
             border: none;
             outline: none;
@@ -181,30 +182,32 @@
         }
 
         .rocky-svg {
-            width: 220px;
-            height: 140px;
+            width: 200px;
+            height: 130px;
             filter: drop-shadow(0 0 10px rgba(255, 112, 150, 0.5));
             transition: transform 0.2s;
         }
 
-        .rocky-trigger-container:hover .rocky-svg {
+        .rocky-trigger-container:hover .rocky-svg,
+        .rocky-trigger-container:active .rocky-svg {
             transform: scale(1.06);
         }
 
         .rocky-bubble {
             position: absolute;
-            top: -55px;
+            top: -50px;
             background: #ffffff;
             color: #d35400;
             font-weight: bold;
-            font-size: 1.1rem;
-            padding: 8px 18px;
+            font-size: 1rem;
+            padding: 8px 16px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
             opacity: 0;
             transform: scale(0.6) translateY(10px);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             white-space: nowrap;
+            pointer-events: none;
         }
 
         .rocky-bubble::after {
@@ -218,16 +221,27 @@
             border-color: #ffffff transparent;
         }
 
+        /* الفقاعة تظهر فقط عند الوقوف بالماوس أو الضغط بالموبايل */
         .rocky-trigger-container:hover .rocky-bubble,
-        .rocky-trigger-container:focus .rocky-bubble {
+        .rocky-trigger-container:focus .rocky-bubble,
+        .rocky-trigger-container:active .rocky-bubble {
             opacity: 1;
             transform: scale(1) translateY(0);
         }
 
+        .tap-hint {
+            color: #ffa6c9;
+            font-size: 1rem;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 71, 126, 0.5);
+            font-weight: 600;
+        }
+
         .neon-arrow-text {
             color: #ff477e;
-            font-size: 2.2rem;
-            margin-top: -5px;
+            font-size: 1.8rem;
+            margin-top: 2px;
         }
 
         #letterScreen {
@@ -323,19 +337,17 @@
                 font-size: 4.2rem;
             }
             .glowing-wishes h1 {
-                font-size: 2.2rem;
+                font-size: 2.1rem;
                 letter-spacing: 2px;
             }
             .rocky-svg {
-                width: 170px;
-                height: 110px;
+                width: 160px;
+                height: 105px;
             }
             .rocky-bubble {
-                font-size: 0.95rem;
-                top: -45px;
+                font-size: 0.9rem;
+                top: -42px;
                 padding: 6px 12px;
-                opacity: 1; /* Always show bubble on touch screens */
-                transform: scale(1) translateY(0);
             }
             .letter-container {
                 padding: 30px 20px;
@@ -396,7 +408,7 @@
 <body>
 
     <audio id="bgMusic" loop>
-       <source src="song.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
     <div id="gameScreen">
@@ -480,6 +492,7 @@
                             <path d="M90,108 Q82,118 72,112 M90,108 Q98,118 108,112" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
                         </g>
                     </svg>
+                    <div class="tap-hint">Tap for a surprise! ✨</div>
                     <div class="neon-arrow-text">▼</div>
                 </div>
             </button>
@@ -542,9 +555,9 @@
             const content = [
                 "Happy 24th Birthday to my favorite long-lost friend, Rawan! 💖",
                 "<br><br>",
-                "First of all, please forgive me for missing October 5th! I might have shown up a few days late, but finding you again after 7 or 8 whole years is the absolute best plot twist ever. 💕",
+                "First of all, please forgive me for missing October 5th! I might have shown up a few days late, but finding you again after 7 or 8 whole years is the absolute best plot twist ever. 🎬",
                 "<br><br>",
-                "You know my memory isn't always the best, but I never forgot how special you are to me. You’ve always been the most special and important person to me, from way back then until today. I’m so ridiculously happy we found each other again... and this time, I’m locking the door so you can’t disappear on me again! 🔪 (Say hi to Boussa & Safrout for me! 🐾)",
+                "You know my memory isn't always the best, but I never forgot how special you are to me. You’ve always been the most special and important person to me, from way back then until today. I’m so ridiculously happy we found each other again... and this time, I’m locking the door so you can’t disappear on me again! 🔒🐾 (Say hi to Boussa & Safrout for me!)",
                 "<br><br>",
                 "B7bk ♥ and I hope this year brings you all the happiness in the world.",
                 "<br><br>",
